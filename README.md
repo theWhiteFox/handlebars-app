@@ -1,6 +1,6 @@
-:musical_keyboard: # handlebars-app
+#handlebars-app
 
-Build a handlebars application
+:musical_keyboard: Build a handlebars application
 - HTML
 - CSS
 - JS

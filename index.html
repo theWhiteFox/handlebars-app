@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="bower_components\handlebars\handlebars.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Handlebars App</title>
+
+</head>
+
+<body>
+
+	<div id="app"></div>
+
+	<script>
+		var template = Handlebars.compile('<div>Hello {{name}}</div>');
+		var appEl = document.getElementById('app');
+		appEl.innerHTML = template({ name: 'Handlebars'});
+	</script>
+
+</body>
+
+</html>
