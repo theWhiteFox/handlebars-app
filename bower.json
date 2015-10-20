@@ -1,0 +1,25 @@
+{
+  "name": "handlebars-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/theWhiteFox/handlebars-app",
+  "authors": [
+    "Stevo5o <stevo.joc@gmail.com>"
+  ],
+  "description": "app built using handlebars",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "handlebars": "v4.0.3",
+    "material-design-lite": "~1.0.5"
+  }
+}
