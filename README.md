@@ -1,6 +1,14 @@
 #handlebars-app
 
 :musical_keyboard: Build a handlebars application
-- HTML
-- CSS
-- JS
+
+| Lanuages     | Dependencies         | 
+| ------------ | -------------------- |
+| HTML 		   | Handlebars           |
+| CSS 		   | jQuery               |
+| JS           | Material Design Lite |
+|              | Bower                |
+
+
+
+
