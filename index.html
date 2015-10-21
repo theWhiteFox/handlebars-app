@@ -12,8 +12,9 @@
 </head>
 
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div class="mdl-layout__header mdl-layout__header--waterfall">
+    <div id="main" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <script type="text/x-handlebars-template" id="index-template">
+            <div class="mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <a class="site-title">
                     <span class="mdl-layout-title">
@@ -40,7 +41,7 @@
         </div>
         <div id="languageSwitch">
             <button class="mdl-button">
-                dead?
+                High Valyrian?
             </button>
         </div>
         <div class="mdl-layout__content">
@@ -142,12 +143,13 @@
                 </div>
             </footer>
         </div>
+        </script>
     </div>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/handlebars/handlebars.min.js"></script>
     <script src="bower_components/material-design-lite/material.min.js"></script>
     <script src="js/characters.js"></script>
-    <!--<script src="js/app.js"></script>-->
+    <script src="js/app.js"></script>
 </body>
 
 </html>
