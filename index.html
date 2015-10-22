@@ -13,12 +13,13 @@
 
 <body>
     <div id="main" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        </div>
         <script type="text/x-handlebars-template" id="index-template">
             <div class="mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <a class="site-title">
                     <span class="mdl-layout-title">
-										dead or not?
+										{{siteTitle}}
 									</span>
                 </a>
                 <!-- Add spacer, to align navigation to the right in desktop -->
@@ -26,109 +27,31 @@
                 <!-- Navigation -->
                 <div>
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="?filter=characters">Dead</a>
-                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="?filter=not_characters">Not Dead</a>
-                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="?filter=maybe_characters">Maybe Dead</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="?filter=characters">{{charactersFilter}}</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="?filter=not_characters">{{notCharactersFilter}}</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="?filter=maybe_characters">{{incompleteFilter}}</a>
                     </nav>
                 </div>
             </div>
         </div>
-        <div id="score">
-            <button class="mdl-button">
-                0 correct | 0 incorrect | 22 incomplete
+        <div id="score"><button class="mdl-button">
+                0 correct | 
+                0 incorrect | 
+                22 incomplete
                 <small>Reset?</small>
             </button>
         </div>
         <div id="languageSwitch">
             <button class="mdl-button">
-                High Valyrian?
+                {{languageFilter}}
             </button>
         </div>
         <div class="mdl-layout__content">
             <a name="top"></a>
             <div class="mdl-typography--text-center">
-                <h1>dead or not?</h1>
+                <h1>{{siteTitle}}</h1>
             </div>
-            <div id="characters">
-                <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="arya-stark">
-                    <div class="mdl-card__title mdl-card--expand" style="background: url('images/arya-stark.jpg') center 15% no-repeat #46B6AC;">
-                        <h2 class="mdl-card__title-text">Arya Stark</h2>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--raised characters-button">
-                            dead
-                        </button>
-                        <button class="mdl-button mdl-button--raised not-characters-button">
-                            not
-                        </button>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="bran-stark">
-                    <div class="mdl-card__title mdl-card--expand" style="background: url('images/bran-stark.jpg') center 15% no-repeat #46B6AC;">
-                        <h2 class="mdl-card__title-text">Bran Stark</h2>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--raised characters-button">
-                            dead
-                        </button>
-                        <button class="mdl-button mdl-button--raised not-characters-button">
-                            not
-                        </button>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="brienne-of-tarth">
-                    <div class="mdl-card__title mdl-card--expand" style="background: url('images/brienne-of-tarth.jpg') center 15% no-repeat #46B6AC;">
-                        <h2 class="mdl-card__title-text">Brienne of Tarth</h2>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--raised characters-button">
-                            dead
-                        </button>
-                        <button class="mdl-button mdl-button--raised not-characters-button">
-                            not
-                        </button>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="cersei-lannister">
-                    <div class="mdl-card__title mdl-card--expand" style="background: url('images/cersei-lannister.jpg') center 15% no-repeat #46B6AC;">
-                        <h2 class="mdl-card__title-text">Cersei Lannister</h2>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--raised characters-button">
-                            dead
-                        </button>
-                        <button class="mdl-button mdl-button--raised not-characters-button">
-                            not
-                        </button>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="daenerys-targaryen">
-                    <div class="mdl-card__title mdl-card--expand" style="background: url('images/daenerys-targaryen.jpg') center 15% no-repeat #46B6AC;">
-                        <h2 class="mdl-card__title-text">Daenerys Targaryen</h2>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--raised characters-button">
-                            dead
-                        </button>
-                        <button class="mdl-button mdl-button--raised not-characters-button">
-                            not
-                        </button>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="davos-seaworth">
-                    <div class="mdl-card__title mdl-card--expand" style="background: url('images/davos-seaworth.jpg') center 15% no-repeat #46B6AC;">
-                        <h2 class="mdl-card__title-text">Davos Seaworth</h2>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--raised characters-button">
-                            dead
-                        </button>
-                        <button class="mdl-button mdl-button--raised not-characters-button">
-                            not
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <div id="theCharacters"></div>
             <div id="pagination">
                 <ul>
                     <li><a href="index.html">1</a></li>
@@ -139,12 +62,28 @@
             </div>
             <footer class="mdl-mega-footer">
                 <div class="mdl-mega-footer--top-section">
-                    <p class="mdl-typography--font-light">© 2015 Ryan Lewis</p>
+                    <p class="mdl-typography--font-light">© 2015 Stephen O'Connor</p>
                 </div>
             </footer>
         </div>
         </script>
-    </div>
+        <script type="text/x-handlebars-template" id="characters-template">
+        {{#each characters}}
+            <div class="mdl-card mdl-shadow--2dp character-card" data-characters-id="{{id}}">
+                <div class="mdl-card__title mdl-card--expand" style="background: url('images/{{image}}') center 15% no-repeat #46B6AC;">
+                    <h2 class="mdl-card__title-text">{{name}}</h2>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button class="mdl-button mdl-button--raised characters-button">
+                        {{@root.language.yep}}
+                    </button>
+                    <button class="mdl-button mdl-button--raised not-characters-button">
+                        {{@root.language.nope}}
+                    </button>
+                </div>
+            </div>
+        {{/each}}
+        </script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/handlebars/handlebars.min.js"></script>
     <script src="bower_components/material-design-lite/material.min.js"></script>
