@@ -210,3 +210,8 @@
   cursor: pointer;
   margin-left: 8px;
 }
+.mdl-card__title-text {  
+  background-color: rgba(255,255,255,.7);
+  padding:3px 9px;
+  border-radius: 2px;
+}

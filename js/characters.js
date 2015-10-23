@@ -1,58 +1,58 @@
 (function() {
     var dh = {};
 
-    dh.chooseDog = function(dogId) {
-    	var dog = dh.getDog(dogId);
-    	if (dog)	{
-    		dog.chosen = 'dog';
+    dh.chooseCharacter = function(characterId) {
+    	var character = dh.getCharacter(characterId);
+    	if (character)	{
+    		character.chosen = 'dead';
     		dh.storeCharacters(dh.characters);
     	}
     };
 
-    dh.chooseNotDog = function(dogId) {
-    	var dog = dh.getDog(dogId);
-    	if (dog)	{
-    		dog.chosen = 'not dog';
+    dh.chooseNotCharacter = function(characterId) {
+    	var character = dh.getCharacter(characterId);
+    	if (character)	{
+    		character.chosen = 'not dead';
     		dh.storeCharacters(dh.characters);
     	}
     };
 
-    dh.getDog = function(dogId) {
-    	var dog;
+    dh.getCharacter = function(characterId) {
+    	var character;
     	dh.characters.forEach(function(val) {
-    		if (val.id === dogId) {
-    			dog = val;
+    		if (val.id === characterId) {
+    			character = val;
     		}
     	});
-    	return dog;
+    	return character;
     };
 
-    dh.isMaybeDog = function(dog) {
-    	return !dog.chosen ||
-    		(dog.isDog && dog.chosen !== 'dog') ||
-    		(!dog.isDog && dog.chosen !== 'not dog');
+    dh.isMaybeCharacter = function(character) {
+    	return !character.chosen ||
+    		(character.isDead && character.chosen !== 'dead') ||
+    		(!character.isDead && character.chosen !== 'not dead');
     };
 
-    dh.isRightDog = function(dog) {
-    	return dog.isDog && dog.chosen === 'dog';
+    dh.isRightCharacter = function(character) {
+    	return character.isDead && character.chosen === 'dead';
     };
 
-    dh.isRightNotDog = function(dog) {
-    	return !dog.isDog && dog.chosen === 'not dog';
+    dh.isRightNotCharacter = function(character) {
+    	return !character.isDead && character.chosen === 'not dead';
     };
 
     dh.getNumberOfCharacters = function() {
-      var dogWidth = 320,
+      var characterWidth = 320,
           charactersPadding = 80;
-      return Math.floor((window.innerWidth - charactersPadding) / dogWidth) * 2;
+      return Math.floor((window.innerWidth - charactersPadding) / characterWidth) * 2;
     };
 
     dh.getPaginatedCharacters = function(characters) {
       var params = Characters.parseUrl(),
-          dogPage = params.page || 1,
-    			dogCount = dh.getNumberOfCharacters(),
-    			start = (dogPage - 1) * dogCount,
-    			stop = dogPage * dogCount;
+          characterPage = params.page || 1,
+    			characterCount = dh.getNumberOfCharacters(),
+    			start = (characterPage - 1) * characterCount,
+    			stop = characterPage * characterCount;
       return characters.slice(start, stop);
     };
 
@@ -60,14 +60,14 @@
       var params = Characters.parseUrl(),
           tempCharacters = characters;
       if(params.filter) {
-    		tempCharacters = characters.filter(function(dog) {
+    		tempCharacters = characters.filter(function(character) {
     			switch(params.filter) {
     				case 'characters':
-    					return Characters.isRightDog(dog);
+    					return Characters.isRightCharacter(character);
     				case 'not_characters':
-    					return Characters.isRightNotDog(dog);
+    					return Characters.isRightNotCharacter(character);
     				case 'maybe_characters':
-    					return Characters.isMaybeDog(dog);
+    					return Characters.isMaybeCharacter(character);
     				default:
     					return false;
     			}
@@ -76,15 +76,15 @@
       return tempCharacters;
     };
 
-    function Character(id, image, name, isDog, chosen) {
+    function Character(id, image, name, isDead, chosen) {
       this.id = id;
       this.image = image;
       this.name = name;
-      this.isDog = isDog;
+      this.isDead = isDead;
       this.chosen = chosen;
       this.isCorrect = function() {
-        return (this.chosen === 'dog' && this.isDog) ||
-      		(this.chosen === 'not dog' && !this.isDog);
+        return (this.chosen === 'dead' && this.isDead) ||
+      		(this.chosen === 'not dead' && !this.isDead);
       }
       return this;
     }
@@ -126,7 +126,7 @@
       var backatchaCharacters = [];
       bunchaCharacters.forEach(function(val) {
         backatchaCharacters.push(new Character(val.id,
-          val.image, val.name, val.isDog, val.chosen));
+          val.image, val.name, val.isDead, val.chosen));
       });
       return backatchaCharacters;
     };
@@ -144,10 +144,10 @@
       var correct = 0,
           incorrect = 0,
           incomplete = characters.length;
-      $.each(characters, function(ix, dog) {
-        if (dog.chosen) {
+      $.each(characters, function(ix, character) {
+        if (character.chosen) {
           incomplete--;
-          if (dog.isCorrect()) {
+          if (character.isCorrect()) {
             correct++;
           } else {
             incorrect++;
@@ -213,19 +213,19 @@
             langId: 'highValyrian',
             siteTitle: 'Morghe iā Daor?',
             charactersFilter: 'Morghe',
-            notCharactersFilter: 'ni Morghe',
+            notCharactersFilter: 'Daor Morghe',
             incompleteFilter: 'Morghe?',
             languageFilter: 'english?',
             languageFilterId: 'english',
             reset: 'ruhuh',
-            correct: 'aroo!',
+            correct: 'kessa',
             incorrect: 'lugon!',
-            incomplete: 'pant!',
+            incomplete: 'daor!',
             yep: 'morghe',
             nope: 'daor',
             correctInd: 'Morghe!',
             incorrectInd: 'Sigligon',
-            noCharactersMessage: 'Ruh-roh! Woof woof whine...'
+            noCharactersMessage: 'Ruh-roh! Konīr issi riña kesīr...'
           },
           languageFilter = dh.parseUrl();
       if ((lang || languageFilter.language) === 'highValyrian') {
