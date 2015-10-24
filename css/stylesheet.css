@@ -119,20 +119,20 @@
   font-weight: 500;
 }
 
-.character-button,
-.not-character-button {
+.dead-button,
+.not-deadr-button {
   background: rgba(158,158,158,.2);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 
-.character-button:hover,
-.not-character-button:hover {
+.dead-button:hover,
+.not-dead-button:hover {
 	background: #FF92B7;
 	color: white;
 }
 
-.character-button.mdl-button--colored,
-.not-character-button.mdl-button--colored {
+.dead-button.mdl-button--colored,
+.not-dead-button.mdl-button--colored {
   background-color: #3f51b5;
   color: #fff;
 }

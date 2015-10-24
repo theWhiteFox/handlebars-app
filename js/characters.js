@@ -1,7 +1,8 @@
 (function() {
     var dh = {};
 
-    dh.chooseCharacter = function(characterId) {
+    // choose dead 
+    dh.chooseDead = function(characterId) {
     	var character = dh.getCharacter(characterId);
     	if (character)	{
     		character.chosen = 'dead';
@@ -9,14 +10,16 @@
     	}
     };
 
-    dh.chooseNotCharacter = function(characterId) {
+    // choose not dead 
+    dh.chooseNotDead = function(characterId) {
     	var character = dh.getCharacter(characterId);
     	if (character)	{
     		character.chosen = 'not dead';
     		dh.storeCharacters(dh.characters);
     	}
     };
-
+    
+    // choose not dead
     dh.getCharacter = function(characterId) {
     	var character;
     	dh.characters.forEach(function(val) {
@@ -27,21 +30,22 @@
     	return character;
     };
 
-    dh.isMaybeCharacter = function(character) {
+    // choose not dead
+    dh.isMaybeDead = function(character) {
     	return !character.chosen ||
     		(character.isDead && character.chosen !== 'dead') ||
     		(!character.isDead && character.chosen !== 'not dead');
     };
 
-    dh.isRightCharacter = function(character) {
+    dh.isRightDead = function(character) {
     	return character.isDead && character.chosen === 'dead';
     };
 
-    dh.isRightNotCharacter = function(character) {
+    dh.isRightNotDead = function(character) {
     	return !character.isDead && character.chosen === 'not dead';
     };
 
-    dh.getNumberOfCharacters = function() {
+    dh.getNumberOfDead = function() {
       var characterWidth = 320,
           charactersPadding = 80;
       return Math.floor((window.innerWidth - charactersPadding) / characterWidth) * 2;
@@ -62,12 +66,12 @@
       if(params.filter) {
     		tempCharacters = characters.filter(function(character) {
     			switch(params.filter) {
-    				case 'characters':
-    					return Characters.isRightCharacter(character);
+    				case 'dead':
+    					return Characters.isRightDead(character);
     				case 'not_characters':
-    					return Characters.isRightNotCharacter(character);
+    					return Characters.isRightNotDead(character);
     				case 'maybe_characters':
-    					return Characters.isMaybeCharacter(character);
+    					return Characters.isMaybeDead(character);
     				default:
     					return false;
     			}
@@ -76,6 +80,7 @@
       return tempCharacters;
     };
 
+// game of thrones of thrones characters 
     function Character(id, image, name, isDead, chosen) {
       this.id = id;
       this.image = image;
@@ -140,27 +145,28 @@
       dh.characters = dh.initCharacters();
     };
 
-    dh.scoreCharacters = function(characters) {
-      var correct = 0,
-          incorrect = 0,
-          incomplete = characters.length;
-      $.each(characters, function(ix, character) {
-        if (character.chosen) {
-          incomplete--;
-          if (character.isCorrect()) {
-            correct++;
-          } else {
-            incorrect++;
-          }
-        }
-      });
-      return {
-        correct: correct,
-        incorrect: incorrect,
-        incomplete: incomplete
-      };
-    };
+    // dh.scoreDead = function(characters) {
+    //   var correct = 0,
+    //       incorrect = 0,
+    //       incomplete = characters.length;
+    //   $.each(characters, function(ix, character) {
+    //     if (character.chosen) {
+    //       incomplete--;
+    //       if (character.isCorrect()) {
+    //         correct++;
+    //       } else {
+    //         incorrect++;
+    //       }
+    //     }
+    //   });
+    //   return {
+    //     correct: correct,
+    //     incorrect: incorrect,
+    //     incomplete: incomplete
+    //   };
+    // };
 
+    // load images
     dh.parseUrl = function() {
     	var queryParams = window.location.search.slice(1).split('&'),
     	    paramsObj = {};
@@ -172,6 +178,7 @@
     	return paramsObj;
     };
 
+    // change language
     dh.generateUrlParameters = function(excludes) {
       var queryParams = dh.parseUrl(),
           returnString = '?';

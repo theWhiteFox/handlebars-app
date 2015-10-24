@@ -24,13 +24,13 @@
 	function attachCharacterButtons() {
 		$('.character-button').click(function() {
 			var id = $(this).closest('.character-card').data('character-id');
-			Characters.chooseCharacter(id);
+			Characters.chooseDead(id);
 			renderCharacters();
 		});
 		
 		$('.not-character-button').click(function() {
 			var id = $(this).closest('.character-card').data('character-id');
-			Characters.chooseNotCharacter(id);
+			Characters.chooseNotDead(id);
 			renderCharacters();
 		});
 	}
