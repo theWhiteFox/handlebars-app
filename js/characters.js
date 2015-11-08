@@ -1,7 +1,7 @@
 (function() {
     var dh = {};
 
-    // choose dead 
+    // // choose dead 
     dh.chooseDead = function(characterId) {
     	var character = dh.getCharacter(characterId);
     	if (character)	{
@@ -10,7 +10,7 @@
     	}
     };
 
-    // choose not dead 
+    // // choose not dead 
     dh.chooseNotDead = function(characterId) {
     	var character = dh.getCharacter(characterId);
     	if (character)	{
@@ -145,26 +145,26 @@
       dh.characters = dh.initCharacters();
     };
 
-    // dh.scoreDead = function(characters) {
-    //   var correct = 0,
-    //       incorrect = 0,
-    //       incomplete = characters.length;
-    //   $.each(characters, function(ix, character) {
-    //     if (character.chosen) {
-    //       incomplete--;
-    //       if (character.isCorrect()) {
-    //         correct++;
-    //       } else {
-    //         incorrect++;
-    //       }
-    //     }
-    //   });
-    //   return {
-    //     correct: correct,
-    //     incorrect: incorrect,
-    //     incomplete: incomplete
-    //   };
-    // };
+    dh.scoreDead = function(characters) {
+      var correct = 0,
+          incorrect = 0,
+          incomplete = characters.length;
+      $.each(characters, function(ix, character) {
+        if (character.chosen) {
+          incomplete--;
+          if (character.isCorrect()) {
+            correct++;
+          } else {
+            incorrect++;
+          }
+        }
+      });
+      return {
+        correct: correct,
+        incorrect: incorrect,
+        incomplete: incomplete
+      };
+    };
 
     // load images
     dh.parseUrl = function() {
